@@ -36,7 +36,8 @@ exports.watsonSpeechToText = function(audioFile, ws) {
     recognizeStream.on('results', function(e) {
       if (e.results[0].final) {
         console.log(e.results[0].alternatives[0]);
-        ws.send(JSON.stringify(e.results[0].alternatives[0]))
+        //ws.send(JSON.stringify(e.results[0].alternatives[0]))
+        ws.emit('payload', e.results[0].alternatives[0])
         results.push(e);
       }
     });
