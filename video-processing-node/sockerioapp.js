@@ -23,7 +23,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-io.on('connection', function(socket){
+io.on('connection', function(client){
   console.log('a user connected');
   client.on('url', (data) => {
      youtube_dl.getYouTubeAudio(data.url)
